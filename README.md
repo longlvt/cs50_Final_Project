@@ -1,6 +1,7 @@
 # My Book Store
 #### Video Demo:  <URL HERE>
 #### Description:
+A Website to search, buy book
 ##### Folder Structure **
 /app
     /controllers
