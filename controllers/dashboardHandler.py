@@ -3,7 +3,7 @@ from cs50 import SQL
 from helpers import apology, login_required
 
 db = SQL("sqlite:///bookDB.db")
-dashboard = Blueprint(dashboard, __name__)
+dashboard = Blueprint('dashboard', __name__)
 
 @dashboard.route("/", methods=["GET", "POST"])
 @login_required

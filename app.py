@@ -11,9 +11,9 @@ from helpers import apology, login_required, lookup, usd
 
 from datetime import datetime
 from controllers.userHandlers import userAuth
-from controllers.userInfoHandlers import userInfo
+from controllers.userInfoHandlers import userManagement
 from controllers.dashboardHandler import dashboard
-from controllers.buyHandler import buy
+from controllers.purchaseHandler import purchase
 from controllers.searchHandler import search
 
 # Configure application
@@ -38,7 +38,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 app.register_blueprint(userAuth)
-app.register_blueprint(userInfo, url_prefix="/user/")
+app.register_blueprint(userManagement, url_prefix="/user")
 app.register_blueprint(dashboard)
-app.register_blueprint(buy)
-app.register_blueprint(search)
+app.register_blueprint(purchase)
+app.register_blueprint(search, url_prefix="/search")

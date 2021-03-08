@@ -2,9 +2,13 @@ from flask import Flask, redirect, render_template, request, session, flash, Blu
 from cs50 import SQL
 from helpers import apology, login_required
 
+
+# Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///bookDB.db")
 
-@buy.route("/buy", methods=["GET", "POST"])
+purchase = Blueprint('purchase', __name__)
+
+@purchase.route("/purchase", methods=["GET", "POST"])
 @login_required
 def buy():
     if request.method == "POST":
