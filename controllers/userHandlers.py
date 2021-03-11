@@ -30,7 +30,7 @@ def register():
             else:
                 # If input userName not found in DB, proceed to add new user to DB
                 db.execute("INSERT INTO users (userName, hash) VALUES (?, ?)", userName, generate_password_hash(password))
-                return redirect("/.html")
+                return redirect("/login.html")
         else:
             if not userName or len(userName) > 25:
                 # nameMsg = ['Username can not be blank.', 'Maximum 25 characters.']
@@ -91,3 +91,7 @@ def logout():
 
     # Redirect user to login form
     return redirect("/")
+
+@userAuth.route("/reset-password", methods=["GET", "POST"])
+def resetPwd():
+    pass

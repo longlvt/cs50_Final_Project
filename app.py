@@ -13,7 +13,7 @@ from datetime import datetime
 from controllers.userHandlers import userAuth
 from controllers.userInfoHandlers import userManagement
 from controllers.dashboardHandler import dashboard
-from controllers.purchaseHandler import purchase
+from controllers.cartHandler import cart
 from controllers.searchHandler import search
 
 # Configure application
@@ -40,5 +40,5 @@ Session(app)
 app.register_blueprint(userAuth)
 app.register_blueprint(userManagement, url_prefix="/user")
 app.register_blueprint(dashboard)
-app.register_blueprint(purchase)
+app.register_blueprint(cart)
 app.register_blueprint(search, url_prefix="/search")

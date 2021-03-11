@@ -5,6 +5,17 @@
 {% endblock %}
 
 {% block main %}
-    <!-- <script defer src="static/scri pt.js"></script> -->
-   <h1>Book Detail</h1>
+    <h1>{{book['Book-Title']}}</h1>
+    <hr>
+    <form action="/search/detail" method="POST">
+        <input type="hidden" name="productId" value="{{book.ISBN}}">
+        <div>
+            <img src="{{book['Image-URL-L']}}" alt="book['Book-Title']">
+        </div>
+        <p><b>Author</b>: {{book['Book-Author']}}</p>
+        <p><b>Published by:</b> {{book['Publisher']}}</p>
+        <p><b>Published in:</b> {{book['Year-Of-Publication']}}</p>
+        <h2>$10</h2>
+        <button class="btn btn-primary" type="submit">Add to Cart</button>
+    </form>
 {% endblock %}
