@@ -48,6 +48,8 @@ A Website to search, buy book
         /dashboardHandler.py -> dashboard
         /userHandlers.py -> login, register, logout
         /userInfoHandlers.py -> userInfo, bookmarked, transaction, topup, reset-password
+        /searchHandler.py -> search, auto title, detail
+        /cartHandler.py -> cart information
     /static
         /script.js
         /style.css
@@ -57,6 +59,9 @@ A Website to search, buy book
         /index.html
         /layout.html
         /register.html
+        /bookDetail.html
+        /cart.html
+        /search.html        
     /app.py
     /requirements.txt
 
