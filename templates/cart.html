@@ -7,7 +7,7 @@
 {% block main %}
     <!-- <script defer src="static/scri pt.js"></script> -->
     <p class="prodInfo" style="text-align: justify;"></p>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -27,13 +27,19 @@
     <script>
         const jsondata = JSON.parse('{{ products | tojson}}')
         let html = ''
+        totalPrice = 0
+        count = 0
         if (jsondata.length > 0) {
             jsondata.forEach(prod => {
-                html += '<tr>' + '<th scope="row">1</th>' + `<td>${prod['Book-Title']}</td>` +  `<td>${prod.quantity}</td>` + '<td>$10</td>' + '<td><form action="/cart-delete-item" method="POST">'
+                count += 1
+                price = prod.quantity * 10
+                html += '<tr>' + `<th scope="row">${count}</th>` + `<td>${prod['Book-Title']}</td>` +  `<td>${prod.quantity}</td>` + `<td>$${price}</td>` + '<td><form action="/cart-delete-item" method="POST">'
                              + `<input type="hidden" value="${prod['ISBN']}" name="productId">`
                              + '<button class="btn btn-danger" type="submit">Remove</button>'
                             + '</form></td>' + '</tr>'
+                totalPrice += price
             })
+            html += '<tr font-size="2rem" style="background-color:#fcf8e8">' + '<th scope="row" colspan="3"><b>Total</b></th>' + `<td><b>$${totalPrice}</b></td>` + '</tr>'
             document.querySelector('tbody').innerHTML = html
         }
         else {

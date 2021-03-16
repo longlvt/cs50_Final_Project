@@ -47,8 +47,13 @@ def detail():
             if len(book) == 0:
                 return apology("Sorry, can't find your book.")
             else:
-                print(f"FOUND: {book}")
-                return render_template("/bookDetail.html", book=book[0])
+                # print(f"FOUND: {book}")
+                # Check current balance of user
+                user = db.execute("SELECT balance FROM users WHERE id = ?", session["user_id"])
+                if user[0]["balance"] > 10:
+                    return render_template("/bookDetail.html", book=book[0], insufficient=False)
+                else:
+                    return render_template("/bookDetail.html", book=book[0], insufficient=True)
         else:
             return apology("Sorry, something is missing. We can proceed with your request. Please try again.")
     else:

@@ -5,24 +5,29 @@
 {% endblock %}
 
 {% block main %}
-    <div>
-        <b>Your Balance: ${{amount}}</b>
+    <div style="text-align: left">
+        <b style="font-size:x-large">Your Balance: ${{amount}}</b>
     </div>
     <hr>
-    <div>
-        <b>Top Rating</b>
-        
-            <ul>
+    <div style="text-align: left">
+        <b style="font-size:x-large">Top Rating</b>
+            {% for book in topBooks %}
+            <div>
+                <img src="{{book['Image-URL-M']}}" alt="book['Book-Title']">
+                <p><b>{{book['Book-Title']}}</b></p>
+            </div>
+            {% endfor %}
+            <!-- <ul>
                 {% for book in topBooks %}
                     <li>
                         {{book['Book-Title']}}                        
                     </li>
                 {% endfor %}
-            </ul>
+            </ul> -->
     </div>
     <hr>
 
-    <div>
-        <b>Because you put to your cart</b>
+    <div style="text-align: left">
+        <b style="font-size:x-large">Because you put to your cart</b>
     </div>
 {% endblock %}

@@ -17,5 +17,14 @@
         <p><b>Published in:</b> {{book['Year-Of-Publication']}}</p>
         <h2>$10</h2>
         <button class="btn btn-primary" type="submit">Add to Cart</button>
+        <p class="warning" style="color: red"></p>
     </form>
+
+    <script>
+        const insufficient = '{{insufficient}}'
+        if (insufficient === "True") {
+            document.querySelector('.warning').innerHTML = 'Your balance is not enough to purchase this book. Please consider to topup!'
+            document.querySelector('.btn').disabled = true
+        }
+    </script>
 {% endblock %}
