@@ -5,6 +5,24 @@
 {% endblock %}
 
 {% block main %}
-    INDEX
+    <div>
+        <b>Your Balance: ${{amount}}</b>
+    </div>
+    <hr>
+    <div>
+        <b>Top Rating</b>
+        
+            <ul>
+                {% for book in topBooks %}
+                    <li>
+                        {{book['Book-Title']}}                        
+                    </li>
+                {% endfor %}
+            </ul>
+    </div>
+    <hr>
+
+    <div>
+        <b>Because you put to your cart</b>
+    </div>
 {% endblock %}
-cf 

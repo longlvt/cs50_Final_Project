@@ -6,11 +6,41 @@
 
 {% block main %}
     <!-- <script defer src="static/scri pt.js"></script> -->
-    <form id="form" action="/buy" method="post">
-        
+    <p class="prodInfo" style="text-align: justify;"></p>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+        <hr>
+    <form class="buyBtn" id="form" action="/buy" method="post">        
         <button class="btn btn-primary" type="submit">Confirm</button>
     </form>
     <script>
-
+        const jsondata = JSON.parse('{{ products | tojson}}')
+        let html = ''
+        if (jsondata.length > 0) {
+            jsondata.forEach(prod => {
+                html += '<tr>' + '<th scope="row">1</th>' + `<td>${prod['Book-Title']}</td>` +  `<td>${prod.quantity}</td>` + '<td>$10</td>' + '<td><form action="/cart-delete-item" method="POST">'
+                             + `<input type="hidden" value="${prod['ISBN']}" name="productId">`
+                             + '<button class="btn btn-danger" type="submit">Remove</button>'
+                            + '</form></td>' + '</tr>'
+            })
+            document.querySelector('tbody').innerHTML = html
+        }
+        else {
+            html += '<b>' + 'NO PRODUCTS IN CART YET!' + '</b>'
+            document.querySelector('p').innerHTML = html
+            document.querySelector('.table').style.display = "none"
+            document.querySelector('.buyBtn').style.display = "none"
+        }
     </script>
 {% endblock %}

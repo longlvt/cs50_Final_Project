@@ -9,8 +9,17 @@ dashboard = Blueprint('dashboard', __name__)
 @login_required
 def index():
     """Show Search box, and 5 Top rating books"""
+    user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+    top5Books = db.execute("SELECT ISBN FROM ratings ORDER BY \"Book-Rating\" DESC LIMIT 5")
+    # print(f"BOOKS FOUND: {top5Books}")
 
-    if request.method == "POST":
-        return redirect("/search/detail")
-    else:
-        return render_template("index.html")
+    bookDetails = []
+    for id in top5Books:
+        detail = db.execute("SELECT * FROM books WHERE ISBN = ?", id["ISBN"])
+        # print(f"DETAIL: {detail}")
+        if len(detail) != 0:
+            bookDetails.append(detail[0])
+    # print(f"DETAILS: {bookDetails}")
+    if len(user) != 0:
+        return render_template("index.html", amount=user[0]["balance"], topBooks = bookDetails)
+        

@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, flash, Blueprint, jsonify
+from flask import Flask, redirect, render_template, request, flash, Blueprint, jsonify, session
 from cs50 import SQL
 from helpers import apology, login_required
 
@@ -55,6 +55,13 @@ def detail():
         isbn = request.form.get('productId')
         print(f"ISBN TO ADD TO CART: {isbn}")
 
-        # Add book to Cart table
-
+        """ Add book to Cart table """
+        # First, check if user already has same book in cart
+        book = db.execute("SELECT * FROM cart WHERE userId = ? AND bookId = ?", session["user_id"], isbn)
+        if len(book) > 0:
+            # Update quantity of book in 'cart' table
+            db.execute("UPDATE cart SET quantity = ? WHERE userId = ? AND bookID = ?", book[0]["quantity"] + 1, session["user_id"], isbn)
+        else:
+            # Create new row in 'cart' table
+            db.execute("INSERT INTO cart (userId, bookId, quantity) VALUES (?, ?, ?)", session["user_id"], isbn, 1)
         return redirect('/cart')
