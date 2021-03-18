@@ -23,5 +23,5 @@ def index():
     bookDetails =db.execute("SELECT * FROM books WHERE ISBN IN (SELECT ISBN FROM ratings ORDER BY \"Book-Rating\" DESC LIMIT 5)")
     # print(f"DETAILS: {bookDetails}")
     if len(user) != 0:
-        return render_template("index.html", amount=user[0]["balance"], topBooks = bookDetails)
+        return render_template("index.html", amount=user[0]["balance"], topBooks = bookDetails, userName=user[0]["username"])
         

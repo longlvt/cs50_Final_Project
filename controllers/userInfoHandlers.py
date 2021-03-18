@@ -9,12 +9,14 @@ userManagement = Blueprint('userManagement', __name__)
 @userManagement.route("/info")
 @login_required
 def show_info():
-    return render_template("/userInfo.html")
+    user = db.execute("SELECT * FROM users WHERE id = ?", session["user_id"])
+    # return render_template("/userInfo.html")
+    return render_template("/accountInfo.html", user = user[0])
 
-@userManagement.route("/bookmarked")
-@login_required
-def show_bookmark():
-    return render_template("/bookmark.html")
+# @userManagement.route("/bookmarked")
+# @login_required
+# def show_bookmark():
+#     return render_template("/bookmark.html")
 
 @userManagement.route("/transaction")
 @login_required
