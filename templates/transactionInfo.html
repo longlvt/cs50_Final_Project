@@ -6,4 +6,49 @@
 
 {% block main %}
     <h1>Purchased</h1>
+    <p class="purchaseData" style="text-align: justify;"></p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Purchased At</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <script>
+            const jsondata = JSON.parse('{{ history | tojson}}')
+            console.log(`HERE: ${JSON.stringify(jsondata)}, ${jsondata.length}`)
+            let html = ''
+            totalPrice = 0
+            count = 0
+            if (jsondata.length > 0) {
+                jsondata.forEach(prod => {
+                    count += 1
+                    if (prod.price) {
+                        console.log(`CHECK: ${prod.price}`)
+                    }
+                    
+                    const price = prod.price ?
+                                    prod.price * prod.quantity : "N/A"
+                    html += '<tr>' + `<th scope="row">${count}</th>`
+                        + `<td>${prod.bookTitle}</td>`
+                        +  `<td>${prod.quantity}</td>`
+                        + `<td>$${price}</td>`
+                        + `<td>${prod.purchaseAt}</td>`
+                        + '</tr>'
+                })
+                // html += '<tr font-size="2rem" style="background-color:#fcf8e8">' + '<th scope="row" colspan="3"><b>Total</b></th>' + `<td><b>$${totalPrice}</b></td>` + '</tr>'
+                document.querySelector('tbody').innerHTML = html
+            }
+            else {
+                html += '<b>' + 'YOU HAVEN\'T PURCHASED ANYTHING YET!' + '</b>'
+                document.querySelector('.purchaseData').innerHTML = html
+                document.querySelector('.table').style.display = "none"
+                document.querySelector('.buyBtn').style.display = "none"
+            }
+        </script>
 {% endblock %}

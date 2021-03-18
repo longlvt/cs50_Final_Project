@@ -33,7 +33,8 @@ def buyBook():
     # Update 'transactions' table
     totalPrice = 0
     for each in cart:
-        db.execute("INSERT INTO transactions (userId, bookId, quantity, purchaseAt) VALUES (?, ?, ?, ?)", each["userId"], each["bookId"], each["quantity"], datetime.now())
+        db.execute("INSERT INTO transactions (userId, bookId, quantity, price, purchaseAt) VALUES (?, ?, ?, ?, ?)",
+                    each["userId"], each["bookId"], each["quantity"], 10 * each["quantity"], datetime.now())
         totalPrice += 10 * each["quantity"]
 
     # Get User balance before purchasing

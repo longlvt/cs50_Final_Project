@@ -6,4 +6,31 @@
 
 {% block main %}
     <h1>Your Information</h1>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Location</th>
+            <th scope="col">Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ user.username }}</td>
+                <td class="age"><span></td>
+                <td class="location"></td>
+                <td>{{ user.balance }}</td>
+                <td><i class="far fa-edit"></i><span> Edit</span></td>
+            </tr>
+        </tbody>
+        <script>
+            const jsondata = JSON.parse('{{ user | tojson}}')
+            if (!jsondata.age) {
+                document.querySelector('.age').innerHTML = 'N/A'
+            }
+            if (!jsondata.location) {
+                document.querySelector('.location').innerHTML = 'N/A'
+            }
+        </script>
 {% endblock %}

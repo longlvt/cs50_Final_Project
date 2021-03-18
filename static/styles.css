@@ -36,6 +36,21 @@ nav .navbar-brand .green
     color: #19b3d3;
 }
 
+.drop_icon
+{
+    position: relative;
+    display: inline-block;
+    padding-right: 80px;
+    /* float: right; */
+}
+
+.drop_pref_icon
+{
+    position: relative;
+    display: inline-block;
+    padding-right: 112px;
+
+}
 main .form-control
 {
     /* Center form controls */
@@ -178,8 +193,34 @@ body
 
 .content
 {
-    margin-left: 200px;
+    margin-left: 220px;
     background-position: left;
     background-size: cover;
     height: 100vh;
+}
+
+.fa-edit:hover
+{
+    color: #19b3d3;
+}
+
+.navbar-nav li:hover .dropdown-menu {
+    display: block;
+    transition-property: color;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+}
+
+.dropdown-menu
+{
+    transition-property: color;
+}
+
+.dropdown-item:hover
+{
+    color: #19b3d3;
 }

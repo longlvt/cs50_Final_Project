@@ -43,17 +43,26 @@
                     <ul class="navbar-nav mr-auto mt-2">
                         <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
                     </ul>
-                    <ul class="navbar-nav mr-auto mt-2">
+                    <!-- <ul class="navbar-nav mr-auto mt-2">
                         <li class="nav-item"><a class="nav-link" href="/cart">Your Cart</a></li>
                     </ul>
                     <ul class="navbar-nav ml-auto mt-2">
                         <li class="nav-item"><a class="nav-link" href="/user/info">Preferences</a></li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto mt-2">
+                    </ul> -->
+                    <!-- <ul class="navbar-nav ml-auto mt-2">
                         <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto mt-2">
-                        <li class="nav-item home_icon"><i class="far fa-user-circle fa-2x"></i><span>  {{userName}}</span></li>
+                    </ul> -->
+                    <ul class="navbar-nav drop_icon">
+                        <li class="nav-item dropdown">
+                            <i class="far fa-user-circle fa-2x"></i>
+                            <span> {{userName}}</span>
+                        <div class="dropdown-menu m-0" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/cart">Your Cart</a>
+                            <a class="dropdown-item" href="/user/info">Preferences</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/logout">Log Out</a>
+                        </div>
+                        </li>
                     </ul>
                 {% else %}
                     <ul class="navbar-nav ml-auto mt-2">
