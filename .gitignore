@@ -1,2 +1,3 @@
 *.cpython*
 # bookDB.db
+__pycache__

@@ -54,6 +54,11 @@ A Website to search, buy book
         /script.js
         /style.css
     /templates
+        /accountInfo.html
+        /resetPwd.html
+        /transactionInfo.html
+        /topup.html
+        /userLayout.html
         /login.html
         /apology.html
         /index.html
@@ -61,19 +66,8 @@ A Website to search, buy book
         /register.html
         /bookDetail.html
         /cart.html
-        /search.html        
+        /search.html
+         
     /app.py
     /requirements.txt
-
-- Login: DONE
-- Register: DONE
-- Search: IN PROGRESS
-  + Need to have a template for displaying detail. (search/detail -> bookDetail.html) => DONE
-  + Need to have a template for input search information (/search -> search.html) => DONE
-  + Need to redirect user to other route (/search/detail) for book detail showing. => DONE
-
-- Cart: IN PROGRESS
-  + Need route, function for adding book to cart.
-  + Need template to display cart information.
-  + Need new table for "Cart".
 
