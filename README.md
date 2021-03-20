@@ -1,5 +1,5 @@
 # My Book Store
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://youtu.be/qEfOGWDfvLs
 #### Description:
 A Website to search, buy book
 - Login page: Allow user to login if he/she has an account.
@@ -47,7 +47,7 @@ A Website to search, buy book
     /controllers
         /dashboardHandler.py -> dashboard
         /userHandlers.py -> login, register, logout
-        /userInfoHandlers.py -> userInfo, bookmarked, transaction, topup, reset-password
+        /userInfoHandlers.py -> userInfo, transaction, topup, reset-password
         /searchHandler.py -> search, auto title, detail
         /cartHandler.py -> cart information
     /static
